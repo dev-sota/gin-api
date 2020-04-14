@@ -9,5 +9,9 @@ Go + Gin + Gorm
 
 ## Usage
 `go mod init`
+
 `go build`
+
 `go mod tidy`
+
+`go run main.go`
