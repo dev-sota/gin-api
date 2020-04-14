@@ -8,16 +8,30 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
+var (
+	db  *gorm.DB
+	err error
+)
+
 // DBInit is initialize DB
 func DBInit() {
-	db := gormConnect()
-
-	defer db.Close()
-	db.Set("gorm:table_options", "ENGINE=InnoDB")
-	db.LogMode(true)
-	db.AutoMigrate(&entity.User{})
+	gormConnect()
+	autoMigration()
 }
 
+// GetDB is called in models
+func GetDB() *gorm.DB {
+	return db
+}
+
+// Close is closing db
+func Close() {
+	if err := db.Close(); err != nil {
+		panic(err)
+	}
+}
+
+// initialize and setup the DB
 func gormConnect() *gorm.DB {
 	DBMS := "mysql"
 	USER := "root"
@@ -25,10 +39,19 @@ func gormConnect() *gorm.DB {
 	PROTOCOL := "tcp(localhost:3306)"
 	DBNAME := "gin_api_development"
 	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME
-	db, err := gorm.Open(DBMS, CONNECT)
+	db, err = gorm.Open(DBMS, CONNECT)
 
 	if err != nil {
 		panic(err.Error())
 	}
+
+	db.Set("gorm:table_options", "ENGINE=InnoDB")
+	db.LogMode(true)
+
 	return db
+}
+
+// Please add migration
+func autoMigration() {
+	db.AutoMigrate(&entity.User{})
 }
