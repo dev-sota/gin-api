@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	users "github.com/dev-sota/gin-api/usecases/services"
+	users "github.com/dev-sota/gin-api/usecases/repositories"
 )
 
 // Controller is users controlller
@@ -13,8 +13,8 @@ type Controller struct{}
 
 // Index action: GET /users
 func (pc Controller) Index(c *gin.Context) {
-	var s users.Service
-	p, err := s.GetAll()
+	var r users.Repository
+	p, err := r.GetAll()
 
 	if err != nil {
 		c.AbortWithStatus(404)
@@ -26,8 +26,8 @@ func (pc Controller) Index(c *gin.Context) {
 
 // Create action: POST /users
 func (pc Controller) Create(c *gin.Context) {
-	var s users.Service
-	p, err := s.CreateModel(c)
+	var r users.Repository
+	p, err := r.CreateModel(c)
 
 	if err != nil {
 		c.AbortWithStatus(400)
@@ -40,8 +40,8 @@ func (pc Controller) Create(c *gin.Context) {
 // Show action: GET /users/:id
 func (pc Controller) Show(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var s users.Service
-	p, err := s.GetByID(id)
+	var r users.Repository
+	p, err := r.GetByID(id)
 
 	if err != nil {
 		c.AbortWithStatus(404)
@@ -54,8 +54,8 @@ func (pc Controller) Show(c *gin.Context) {
 // Update action: PUT /users/:id
 func (pc Controller) Update(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var s users.Service
-	p, err := s.UpdateByID(id, c)
+	var r users.Repository
+	p, err := r.UpdateByID(id, c)
 
 	if err != nil {
 		c.AbortWithStatus(400)
@@ -68,9 +68,9 @@ func (pc Controller) Update(c *gin.Context) {
 // Delete action: DELETE /users/:id
 func (pc Controller) Delete(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var s users.Service
+	var r users.Repository
 
-	if err := s.DeleteByID(id); err != nil {
+	if err := r.DeleteByID(id); err != nil {
 		c.AbortWithStatus(403)
 		fmt.Println(err)
 	} else {

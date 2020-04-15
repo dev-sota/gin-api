@@ -6,14 +6,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Service procides user's behavior
-type Service struct{}
+// Repository procides user'r behavior
+type Repository struct{}
 
 // User is alias of entities.User struct
 type User entities.User
 
 // GetAll is get all User
-func (s Service) GetAll() ([]User, error) {
+func (r Repository) GetAll() ([]User, error) {
 	db := database.Get()
 	var u []User
 
@@ -25,7 +25,7 @@ func (s Service) GetAll() ([]User, error) {
 }
 
 // CreateModel is create User model
-func (s Service) CreateModel(c *gin.Context) (User, error) {
+func (r Repository) CreateModel(c *gin.Context) (User, error) {
 	db := database.Get()
 	var u User
 
@@ -41,7 +41,7 @@ func (s Service) CreateModel(c *gin.Context) (User, error) {
 }
 
 // GetByID is get a User
-func (s Service) GetByID(id string) (User, error) {
+func (r Repository) GetByID(id string) (User, error) {
 	db := database.Get()
 	var u User
 
@@ -53,7 +53,7 @@ func (s Service) GetByID(id string) (User, error) {
 }
 
 // UpdateByID is update a User
-func (s Service) UpdateByID(id string, c *gin.Context) (User, error) {
+func (r Repository) UpdateByID(id string, c *gin.Context) (User, error) {
 	db := database.Get()
 	var u User
 
@@ -71,7 +71,7 @@ func (s Service) UpdateByID(id string, c *gin.Context) (User, error) {
 }
 
 // DeleteByID is delete a User
-func (s Service) DeleteByID(id string) error {
+func (r Repository) DeleteByID(id string) error {
 	db := database.Get()
 	var u User
 
