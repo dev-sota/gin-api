@@ -1,4 +1,4 @@
-package infrastructure
+package database
 
 import (
 	"github.com/dev-sota/gin-api/entity"
@@ -13,14 +13,14 @@ var (
 	err error
 )
 
-// DBInit is initialize DB
-func DBInit() {
+// Init is initialize DB
+func Init() {
 	gormConnect()
 	autoMigration()
 }
 
-// GetDB is called in models
-func GetDB() *gorm.DB {
+// Get is called in models
+func Get() *gorm.DB {
 	return db
 }
 
