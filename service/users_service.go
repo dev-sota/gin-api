@@ -1,7 +1,7 @@
 package users
 
 import (
-	"github.com/dev-sota/gin-api/entity"
+	"github.com/dev-sota/gin-api/entities"
 	"github.com/dev-sota/gin-api/infrastructure/database"
 	"github.com/gin-gonic/gin"
 )
@@ -9,8 +9,8 @@ import (
 // Service procides user's behavior
 type Service struct{}
 
-// User is alias of entity.User struct
-type User entity.User
+// User is alias of entities.User struct
+type User entities.User
 
 // GetAll is get all User
 func (s Service) GetAll() ([]User, error) {

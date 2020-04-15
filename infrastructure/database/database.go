@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/dev-sota/gin-api/entity"
+	"github.com/dev-sota/gin-api/entities"
 	"github.com/jinzhu/gorm"
 
 	// Use MySQL
@@ -53,5 +53,5 @@ func gormConnect() *gorm.DB {
 
 // Please add migration
 func autoMigration() {
-	db.AutoMigrate(&entity.User{})
+	db.AutoMigrate(&entities.User{})
 }
