@@ -21,7 +21,7 @@ Go + Gin + Gorm
 
 ## Operation
 
-`curl http://localhost:8080/users/ -X GET`
+`curl http://localhost:8080/users -X GET`
 
 `curl http://localhost:8080/users -X POST -H "Content-Type: application/json" -d '{"FirstName": "John", "LastName": "Doe"}'`
 
