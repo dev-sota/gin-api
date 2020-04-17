@@ -1,0 +1,1 @@
+mysql -uroot < ./reset_db.sql
