@@ -1,7 +1,6 @@
 package database
 
 import (
-	"github.com/dev-sota/gin-api/entities"
 	"github.com/jinzhu/gorm"
 
 	// Use MySQL
@@ -16,7 +15,6 @@ var (
 // Init is initialize DB
 func Init() {
 	gormConnect()
-	autoMigration()
 }
 
 // Get is called in models
@@ -49,9 +47,4 @@ func gormConnect() *gorm.DB {
 	db.LogMode(true)
 
 	return db
-}
-
-// Please add migration
-func autoMigration() {
-	db.AutoMigrate(&entities.User{})
 }

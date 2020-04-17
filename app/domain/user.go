@@ -1,4 +1,4 @@
-package entities
+package domain
 
 // User is users tabel property
 type User struct {
