@@ -1,7 +1,7 @@
 package router
 
 import (
-	users "github.com/dev-sota/gin-api/interfaces/controllers"
+	users "github.com/dev-sota/gin-api/app/adapter/controllers"
 	"github.com/gin-gonic/gin"
 )
 
